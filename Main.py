@@ -20,21 +20,23 @@ def first(file1, file2):
         return f1.hexdigest(), f2.hexdigest()
 
 def word_count(file):
+    count = 0
     with open(file,"r") as f:
-        count = 0
-        for char in file.strip().rstrip("."):
+        l = f.read()
+        m = l.split()
+        for i in m:
             count += 1
-            if count < 0:
+            if count< 0:
                 break
-        return count
+        return f"{file} word count:{count}"
 
 
 msg1, msg2 = first("Sample_file1","Sample_file2")
 
-
 if msg1!= msg2:
     print("Non-identical")
-    print(f"Sample_file2 word count:{word_count("Sample_file2")}")
+    print(word_count("Sample_file1"))
+    print(word_count("Sample_file2"))
 
 else:
     print("identical")
